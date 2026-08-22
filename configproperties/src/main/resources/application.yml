@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: configurationprops
+
+app:
+  mail:
+    host: localhost
+    port: 25

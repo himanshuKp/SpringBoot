@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-TransactionalApplication<transactional>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.himanshu.transactional.TransactionalApplication",
+            "projectName": "transactional",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-HomeApplication<home>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.himanshu.home.HomeApplication",
+            "projectName": "home",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
