@@ -19,6 +19,16 @@
             "projectName": "home",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-CacheableApplication<cacheable>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.himanshu.cacheable.CacheableApplication",
+            "projectName": "cacheable",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
