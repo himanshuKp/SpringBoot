@@ -39,6 +39,16 @@
             "projectName": "transactionaleventlistener",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-AsyncApplication<async>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.himanshu.async.AsyncApplication",
+            "projectName": "async",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
