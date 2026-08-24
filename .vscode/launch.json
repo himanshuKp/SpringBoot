@@ -29,6 +29,16 @@
             "projectName": "cacheable",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-TransactionaleventlistenerApplication<transactionaleventlistener>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.himanshu.transactionaleventlistener.TransactionaleventlistenerApplication",
+            "projectName": "transactionaleventlistener",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
