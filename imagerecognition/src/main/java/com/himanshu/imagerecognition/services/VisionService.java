@@ -1,5 +1,6 @@
 package com.himanshu.imagerecognition.services;
 
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
 
@@ -25,14 +26,28 @@ public class VisionService {
     public List<PredictionResponse> recognize(MultipartFile file) {
         try (InputStream is = file.getInputStream();
                 Predictor<Image, Classifications> predictor = model.newPredictor()) {
-            Image image = ImageFactory.getInstance().fromInputStream(is);
-            Classifications classifications = predictor.predict(image);
-
-            return classifications.topK(5).stream()
-                    .map(item -> new PredictionResponse(item.getClassName(), item.getProbability()))
-                    .toList();
+            return recognize(is, predictor);
         } catch (Exception e) {
             throw new RuntimeException("Error processing image recognition: ", e);
         }
+    }
+
+    public List<PredictionResponse> recognize(byte[] imageBytes) {
+        try (InputStream is = new ByteArrayInputStream(imageBytes);
+                Predictor<Image, Classifications> predictor = model.newPredictor()) {
+            return recognize(is, predictor);
+        } catch (Exception e) {
+            throw new RuntimeException("Error processing image recognition: ", e);
+        }
+    }
+
+    private List<PredictionResponse> recognize(InputStream is, Predictor<Image, Classifications> predictor)
+            throws Exception {
+        Image image = ImageFactory.getInstance().fromInputStream(is);
+        Classifications classifications = predictor.predict(image);
+
+        return classifications.topK(5).stream()
+                .map(item -> new PredictionResponse(item.getClassName(), item.getProbability()))
+                .toList();
     }
 }

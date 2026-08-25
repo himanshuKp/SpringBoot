@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import ai.djl.Application;
 import ai.djl.ModelException;
 import ai.djl.modality.Classifications;
 import ai.djl.modality.cv.Image;
@@ -21,16 +22,17 @@ public class DjlConfig {
     @Bean
     public ZooModel<Image, Classifications> imageModel() throws ModelException, IOException {
         Criteria<Image, Classifications> criteria = Criteria.builder()
-        .setTypes(Image.class, Classifications.class)
-        .optEngine("PyTorch")
-        .optFilter("backbone", "resnet50")
-        .optTranslator(ImageClassificationTranslator.builder()
-            .addTransform(new Resize(256))
-            .addTransform(new CenterCrop(224, 224))
-            .addTransform(new ToTensor())
-            .optApplySoftmax(true)
-            .build())
-        .build();
+                .setTypes(Image.class, Classifications.class)
+                .optApplication(Application.CV.IMAGE_CLASSIFICATION)
+                .optEngine("PyTorch")
+                .optFilter("layers", "50")
+                .optTranslator(ImageClassificationTranslator.builder()
+                        .addTransform(new Resize(256))
+                        .addTransform(new CenterCrop(224, 224))
+                        .addTransform(new ToTensor())
+                        .optApplySoftmax(true)
+                        .build())
+                .build();
 
         return criteria.loadModel();
     }
