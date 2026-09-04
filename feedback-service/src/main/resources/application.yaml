@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: feedback-service
+  thymeleaf:
+    cache: false
+    mode: HTML
+
+gemini:
+  api-key: ${GEMINI_API_KEY:}
+
+
